@@ -6,8 +6,9 @@ public class Interval {
 	private int previousWin;
 	private int followingWin;
 
-	public Interval(String producer) {
+	public Interval(String producer, int previousWin) {
 		this.producer = producer;
+		this.previousWin = previousWin;
 	}
 	public String getProducer() {
 		return producer;
@@ -22,25 +23,12 @@ public class Interval {
 		return followingWin;
 	}
 	
-	public void updatePreviousWin(int previousWin) {
+	public void setPreviousWin(int previousWin) {
 		this.previousWin = previousWin;
-		if(followingWin==0) {
-			followingWin = previousWin;
-		}
-		updateInterval();
 	}
-	public void updateFollowingWin(int followingWin) {
+	public void setFollowingWin(int followingWin) {
 		this.followingWin = followingWin;
-		if(previousWin==0) {
-			previousWin = followingWin;
-		}
-		updateInterval();
-	}
-	
-	private void updateInterval() {
-		if(followingWin==0 && previousWin>0) {
-			followingWin = previousWin;
-		}
 		interval = followingWin - previousWin;
 	}
+	
 }
